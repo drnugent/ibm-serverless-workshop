@@ -1,3 +1,4 @@
+<style> img { white-space: nowrap;} </style>
 # Build Serverless Applications with Apache OpenWhisk!
 
 - Step 0: Sign up for IBM Cloud
@@ -55,22 +56,30 @@ The CLI (command line interface) allows you to perform these basic operations fr
 
 <img src="images/Page-4-Image-4.jpg" width="400">
 
-  a. Actions – The actions section lists all actions you have created prior. An action is a small piece of code that can be explicitly invoked or set to automatically run in response to an event.
-  b. Triggers – A trigger is a declaration that you want to react to a certain type of event, whether from a user or by an event source. A trigger can be fired or activated. Triggers can be associated with actions, so that when the
+* Actions – The actions section lists all actions you have created prior. An action is a small piece of code that can be explicitly invoked or set to automatically run in response to an event.
+* Triggers – A trigger is a declaration that you want to react to a certain type of event, whether from a user or by an event source. A trigger can be fired or activated. Triggers can be associated with actions, so that when the
 trigger is fired the action is run.
-  c. Monitor – This section shows you information about your actions and their activity, including an activity summary and timeline.
-  d. Logs – The logs section takes you to the IBM Cloud Logging service, which provides you with the ability to collect, analyze, and build dashboards for
+* Monitor – This section shows you information about your actions and their activity, including an activity summary and timeline.
+* Logs – The logs section takes you to the IBM Cloud Logging service, which provides you with the ability to collect, analyze, and build dashboards for
 your logs.
-  e. APIs – The APIs section allows you to set up an API Gateway and API
+* APIs – The APIs section allows you to set up an API Gateway and API
 management for IBM Cloud Functions. This is beyond the scope of today’s
 lab.
+
 4. Start creating your first action by selecting the **Start Creating** button in the center of the UI, which opens the Create page. Then select the **Create Action** button.
+
 <img src="images/Page-5-Image-5.jpg" width="700">
+
 5. Specify an Action Name (e.g. hello), by entering it into the text field, and then select Node.js 10 as the runtime. Leave everything else as-is and click the **Create** button at the bottom of the screen.
+
 <img src="images/Page-6-Image-6.jpg" width="700">
+
 6. This opens a cloud-based code editor that you can use to create and extend your actions. There should already be some hello world code in the action.
+
 7. Click **Invoke** to test this action directly from within your browser. You should see an Activations panel show up with the result.
+
 <img src="images/Page-6-Image-7.jpg" width="700">
+
 8. Actions may be invoked with a number of named parameters. Let’s try out an action that accepts parameters. Update the action code by copy-pasting the following into the code section:
 
 ```
@@ -80,6 +89,7 @@ return { message: 'Hello, ' + params.name + ' from ' + params.place };
 ```
 
 9. Click **Save**, then click **Invoke**. In the activations panel, you should see a result of Hello undefined from undefined. This is expected, because we didn’t provide the action with any parameters. Let’s do this.
+
 10. Click on the **Change Input** button, and update the parameters with the following json:
 ```{"name":"ibmdevelopersf","place":"San Francisco"}```
 
