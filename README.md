@@ -44,7 +44,11 @@ There are two main options to get started with Cloud Functions. Both allow you t
 The CLI (command line interface) allows you to perform these basic operations from your shell. The IBM Cloud Functions UI (user interface), allows you to perform the same operations from your browser. As a stretch goal, step 4 of this lap involves installing the CLI. During this step of this lab we will use the UI to learn how to work with Cloud Functions.
 
 1. Start by logging into the IBM Cloud: http://ibm.biz/hacker-dojo-serverless, and then selecting the hamburger menu in the header.
+![](images/Page-3-Image-2.jpg)
+
 2. Then click on Functions to access the IBM Cloud Functions development experience on IBM Cloud.
+!(images/Page-4-Image-3.jpg)
+
 3. The Cloud Functions UI is comprised of the following sections in the left hand side menu bar. You will learn about these basic entities in later sections.
   a. Actions – The actions section lists all actions you have created prior. An action is a small piece of code that can be explicitly invoked or set to automatically run in response to an event.
   b. Triggers – A trigger is a declaration that you want to react to a certain type of event, whether from a user or by an event source. A trigger can be fired or activated. Triggers can be associated with actions, so that when the
