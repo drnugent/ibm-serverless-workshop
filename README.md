@@ -362,7 +362,7 @@ The CLI (command line interface) allows you to perform these basic operations fr
 
 5. Specify the Action Name, split, by entering it into the text field, and then select Node.js 10 as the runtime. Leave everything else as-is and click the Create button at the bottom of the screen.
 
-<img src="images/lab3/" width="700">
+<img src="images/lab3/Page-6-Image-13.jpg" width="700">
 
 6. This opens a cloud-based code editor that you can use to create and extend your actions. There should already be some hello world code in the action.
 
@@ -380,7 +380,7 @@ return { words: words }
 
 9. Click **Invoke**, and you should see that the input words have been split into an array.
 
-<img src="images/lab3/" width="700">
+<img src="images/lab3/Page-7-Image-14.jpg" width="700">
 
 ## CREATE THE SECOND AND THIRD ACTION
 
@@ -388,15 +388,15 @@ The first action split the words apart by using space as a delimiter. The second
 
 1. Click **/ Actions /** in the breadcrumb in the upper left of the page to go to the dashboard.
 
-<img src="images/lab3/" width="200">
+<img src="images/lab3/Page-7-Image-15.jpg" width="200">
 
 2. Click **Create** to open the Create page, and then select **Create Action**.
 
-<img src="images/lab3/" width="400">
+<img src="images/lab3/Page-8-Image-16.jpg" width="400">
 
 3. Again, specify your action name. This time, **reverse**. Click **Create**.
 
-<img src="images/lab3/" width="400">
+<img src="images/lab3/Page-8-Image-17.jpg" width="400">
 
 4. Copy, and then paste the action code into the code editor, and click **Save**:
 
@@ -410,11 +410,11 @@ return { words: reversed }
 
 5. Let’s create the third action in our sequence. Click **/ Actions /** in the breadcrumb in the upper left of the page to go to the dashboard.
 
-<img src="images/lab3/" width="200">
+<img src="images/lab3/Page-9-Image-18.jpg" width="200">
 
 6. Click **Create** to open the Create page, and then select **Create Action**.
 
-<img src="images/lab3/" width="400">
+<img src="images/lab3/Page-9-Image-19.jpg" width="400">
 
 7. Again, specify your action name. This time, join. The join action will rejoin the words into a string, with spaces in-between each reversed word. Click **Create**.
 
@@ -438,23 +438,23 @@ Sequences can be useful as an alternative to one action manually invoking anothe
 
 2. Once the sequence is named, click **Create & Add**.
 
-<img src="images/lab3/" width="600">
+<img src="images/lab3/Page-10-Image-20.jpg" width="600">
 
 3. Click the *sequence name* to further edit the sequence.
 
-<img src="images/lab3/" width="300">
+<img src="images/lab3/Page-11-Image-21.jpg" width="300">
 
 4. Click the **Add +** button to add more actions to this sequence.
 
 5. Select the **Select Existing** option, and then find the **split** action in the drop down. Once selected, click **Add** in the bottom right.
 
-<img src="images/lab3/" width="400">
+<img src="images/lab3/Page-11-Image-23.jpg" width="400">
 
 6. Repeat the steps for reverse. Click the Add + button, choose Select Existing, and then find the reverse action in the drop down. Once selected, click Add in the bottom right.
 
 7. Using the arrows, rearrange your sequence actions until they are in order: split, reverse, join, and then click Save.
 
-<img src="images/lab3/" width="600">
+<img src="images/lab3/Page-12-Image-24.jpg" width="600">
 
 8. Let’s try it out. We can provide the sequence with input, just like we can an action. Click **Change Input**, and then provide the following json, and then click **Apply**:
 
@@ -462,7 +462,7 @@ Sequences can be useful as an alternative to one action manually invoking anothe
 
 Click **Invoke**, and you should see the following output:
 
-<img src="images/lab3/" width="300">
+<img src="images/lab3/Page-12-Image-25.jpg" width="300">
 
 Did you notice that the logs include 3 numbers? Those are activation IDs for each of the individual actions within the sequence. Activation IDs are a unique identifier that actions generate when they are run. These can be used to debug in case something goes wrong with a particular action in the sequence.
 
