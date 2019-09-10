@@ -188,6 +188,145 @@ Congratulations! You have completed the lab. You have successfully built and dep
 
 # Step 2: Create, build, and run a cloud-native Python serverless application that uses the Visual Recognition service to determine image content
 
+## INTRODUCTION
+
+In this lab, you’ll create an IBM Cloud Functions action that takes an image URL as input, and returns some tags describing the content of the image. To get the tags, the action will interact with the Visual Recognition Service on IBM Cloud.
+
+## PREREQUISITES FOR THIS LAB
+            
+* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/hacker-dojo-serverless
+
+## CREATE A VISUAL RECOGNITION SERVICE
+For this quicklab, you will need to provision a Visual Recognition service in the IBM Cloud.
+
+1. Start by logging into the IBM Cloud: http://ibm.biz/hacker-dojo-serverless, and then select the **Create Resource** button in the top right. If you do not see Create Resource, you can select **Catalog**.
+
+2. Select **AI** in the left menu, and then select **Visual Recognition**. You can create only one free **lite tier** resource with the free IBM Cloud account. If you already have a visual recognition service, either delete it and follow these steps or you can skip to step 4 to get the credentials.
+
+<img src="images/lab2/" width="400">
+
+3. Give your service a name, and then click **Create**.
+
+<img src="images/lab2/" width="400">
+
+4. Click **Service Credentials** to ensure a set of service credentials were generated for you (you may need to refresh this page).
+a. If not, click **New Credential**, and then **Add**.
+
+5. Click **view credentials** and take note of the **apikey**provided. You will need this later on in the lab, so you may want to copy it to a notes file.
+
+## CREATE AN ACTION IN THE CLOUD FUNCTIONS UI
+
+There are two main options to get started with Cloud Functions. Both allow you to work with Cloud Function’s basic entities by creating, updating, and deleting actions, triggers, rules and sequences.
+
+The CLI (command line interface) allows you to perform these basic operations from your shell. The IBM Cloud Functions UI (user interface), allows you to perform the same operations from your browser. During this lab we will use the UI to learn how to work with Cloud Functions.
+
+1. Select the hamburger menu in the IBM Cloud header.
+
+<img src="images/lab2/" width="400">
+
+2. Then click on **Functions** to access the IBM Cloud Functions development experience on IBM Cloud.
+
+<img src="images/lab2/" width="400">
+
+3. The Cloud Functions UI is comprised of the following sections in the left-hand side menu bar.
+
+<img src="images/lab2/" width="400">
+
+4. Start creating your first action by selecting the Start Creating button in the center of the UI, which opens the Create page. Then select the Create Action button.
+
+<img src="images/lab2/" width="400">
+
+5. Specify an **Action Name** (e.g. openwhisk-vr), by entering it into the text field, and then select **Python** as the runtime. Leave everything else as-is and click the **Create** button at the bottom of the screen.
+
+<img src="images/lab2/" width="400">
+
+6. This opens a cloud-based code editor that you can use to create and extend your actions. There should already be some hello world code in the action.
+
+7. Click **Invoke** to test this action directly from within your browser. You should see an Activations panel show up with the result. The result should be “Hello world”
+
+<img src="images/lab2/" width="400">
+
+## USE THE BUILT IN VISUAL RECOGNITION SDK FROM YOUR PYTHON ACTION.
+
+Each IBM Cloud Functions runtime comes with some packages already pre- installed to the environment. The Python runtime includes the Watson Developer Cloud SDKs (Software Development Kits) including the visual recognition SDK we’ll use today. 
+
+We’ll import this visual recognition SDK to make calls to the service in a python-native way.
+
+1. Replace the hello world Python code with the following code, found on the next page. You can copy paste this code from this github gist: https://ibm.biz/openwhisk-vr-1
+
+```
+from watson_developer_cloud import VisualRecognitionV3
+def main(params):
+    # init visual recognition library
+    apiKey = params['apiKey']
+    version = "2018-03-19"
+    visual_recognition = VisualRecognitionV3(version=version, iam_apikey=apiKey)
+    # get image url from params
+    image_url = params['imageUrl']
+    # parse visual recognition return data for our tags
+    tags = ""
+    classifiedImages = visual_recognition.classify(url=image_url).get_result()
+    image = classifiedImages['images'][0]
+    classes = image['classifiers'][0]['classes']
+    for theClass in classes:
+        currentTag = theClass['class']
+        print(currentTag)
+        tags = tags + currentTag + ", "
+    result = {'classes': tags}
+    return result
+```
+
+2. Click **Save**. Look over the code. You can see we’re importing the **VisualRecognitionV3** SDK as promised. Find where we’re instantiating the SDK (around line 7). You can see that we will need the apikey we saved before. This action expects the apiKey to be passed in as a parameter.’
+
+```
+# init visual recognition library
+apiKey = params['apiKey']
+version = "2018-03-19"
+visual_recognition = VisualRecognitionV3(version=version, iam_apikey=apiKey)
+```
+
+3. Default parameters can be set for an action, rather than passing the parameters into the action every time. This is a useful option for data that stays the same on every invocation. Let’s set the apiKey as one of our default parameters. Click **Parameters** in the left side menu, and then click **Add Parameter +**.
+
+<img src="images/lab2/" width="400">
+
+4. For parameter name, **apiKey**, with a capital **K**. For parameter value, insert your apiKey value enclosed in quotation marks.
+
+<img src="images/lab2/" width="400">
+
+5. Click **Save**.
+
+## USE THE BUILT IN VISUAL RECOGNITION SERVICE TO CLASSIFY AN IMAGE
+
+1. Let’s inspect the code a little more. You can see that this action also takes as input an imageUrl. It then passes that imageUrl to the visualRecognition service, and does some simple parsing of the results – ultimately returning the “classes” representing the contents of the image.
+
+```
+classifiedImages = visual_recognition.classify(url=image_url).get_result() image = classifiedImages['images'][0]
+classes = image['classifiers'][0]['classes']
+for theClass in classes:
+    currentTag = theClass['class']
+    print(currentTag)
+    tags = tags + currentTag + ", "
+result = {'classes': tags}
+```
+
+2. Change the input for this function to be an image URL by clicking **Change Input**, and then pasting in the following json.
+
+```{"imageUrl":"https://raw.githubusercontent.com/beemarie/ow- vr/master/images/puppy.jpg"}```
+
+3. This is an image of a cute puppy. **Click Apply**.
+
+<img src="images/lab2/" width="400">
+
+4. Click **Invoke** to run the action. This action will pass the image to the Visual Recognition service to classify, then parse the returned information, and finally output just the classes or tags of the image.
+
+5. You should see some results in the Activations window like **Labrador Retriever, dog, pup,** and **animal**.
+
+<img src="images/lab2/" width="400">
+
+## CONCLUSION
+
+**Congratulations!** You have completed this lab. You have successfully created and used a Visual Recognition service. You have also built and deployed a Serverless Cloud Function, saw some Python and features, and used the Visual Recognition SDK built in with the language runtime – all from within a browser! Feel free to reach out should you have any questions.
+
 
 # Step 3: Create, build, and run three serverless functions as a sequence
 
