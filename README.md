@@ -203,11 +203,11 @@ For this quicklab, you will need to provision a Visual Recognition service in th
 
 2. Select **AI** in the left menu, and then select **Visual Recognition**. You can create only one free **lite tier** resource with the free IBM Cloud account. If you already have a visual recognition service, either delete it and follow these steps or you can skip to step 4 to get the credentials.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-4-Image-8.jpg" width="700">
 
 3. Give your service a name, and then click **Create**.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-5-Image-9.jpg" width="700">
 
 4. Click **Service Credentials** to ensure a set of service credentials were generated for you (you may need to refresh this page).
 a. If not, click **New Credential**, and then **Add**.
@@ -222,23 +222,23 @@ The CLI (command line interface) allows you to perform these basic operations fr
 
 1. Select the hamburger menu in the IBM Cloud header.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-6-Image-10.jpg" width="200">
 
 2. Then click on **Functions** to access the IBM Cloud Functions development experience on IBM Cloud.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-6-Image-11.jpg" width="200">
 
 3. The Cloud Functions UI is comprised of the following sections in the left-hand side menu bar.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-6-Image-12.jpg" width="200">
 
 4. Start creating your first action by selecting the Start Creating button in the center of the UI, which opens the Create page. Then select the Create Action button.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-7-Image-13.jpg" width="700">
 
 5. Specify an **Action Name** (e.g. openwhisk-vr), by entering it into the text field, and then select **Python** as the runtime. Leave everything else as-is and click the **Create** button at the bottom of the screen.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-8-Image-14.jpg" width="400">
 
 6. This opens a cloud-based code editor that you can use to create and extend your actions. There should already be some hello world code in the action.
 
