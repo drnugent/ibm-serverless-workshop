@@ -232,7 +232,7 @@ The CLI (command line interface) allows you to perform these basic operations fr
 
 <img src="images/lab2/Page-6-Image-12.jpg" width="200">
 
-4. Start creating your first action by selecting the Start Creating button in the center of the UI, which opens the Create page. Then select the Create Action button.
+4. Start creating your first action by selecting the **Start Creating** button in the center of the UI, which opens the Create page. Then select the Create Action button.
 
 <img src="images/lab2/Page-7-Image-13.jpg" width="700">
 
@@ -311,7 +311,7 @@ result = {'classes': tags}
 
 2. Change the input for this function to be an image URL by clicking **Change Input**, and then pasting in the following json.
 
-```{"imageUrl":"https://raw.githubusercontent.com/beemarie/ow- vr/master/images/puppy.jpg"}```
+```{"imageUrl":"https://raw.githubusercontent.com/beemarie/ow-vr/master/images/puppy.jpg"}```
 
 3. This is an image of a cute puppy. **Click Apply**.
 
@@ -330,6 +330,147 @@ result = {'classes': tags}
 
 # Step 3: Create, build, and run three serverless functions as a sequence
 
+## INTRODUCTION
+
+In this lab, you’ll create three functions for doing some data manipulation of a string, and then tie them together in a sequence.
+
+## PREREQUISITES FOR THIS LAB
+
+* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/hacker-dojo-serverless
+
+## CREATE THE FIRST ACTION
+
+There are two main options to get started with Cloud Functions. Both allow you to work with Cloud Function’s basic entities by creating, updating, and deleting actions, triggers, rules and sequences.
+
+The CLI (command line interface) allows you to perform these basic operations from your shell. The IBM Cloud Functions UI (user interface), allows you to perform the same operations from your browser. During this lab we will use the UI to learn how to work with Cloud Functions.
+
+1. Select the hamburger menu in the IBM Cloud header.
+
+<img src="images/lab2/Page-6-Image-10.jpg" width="200">
+
+2. Then click on **Functions** to access the IBM Cloud Functions development experience on IBM Cloud.
+
+<img src="images/lab2/Page-6-Image-11.jpg" width="200">
+
+3. The Cloud Functions UI is comprised of the following sections in the left-hand side menu bar.
+
+<img src="images/lab2/Page-6-Image-12.jpg" width="200">
+
+4. Start creating your first action by selecting the **Start Creating** button in the center of the UI, which opens the Create page. Then select the Create Action button.
+
+<img src="images/lab2/Page-7-Image-13.jpg" width="700">
+
+5. Specify the Action Name, split, by entering it into the text field, and then select Node.js 10 as the runtime. Leave everything else as-is and click the Create button at the bottom of the screen.
+
+<img src="images/lab3/" width="700">
+
+6. This opens a cloud-based code editor that you can use to create and extend your actions. There should already be some hello world code in the action.
+
+7. Replace the code with the following code for the action:
+
+```
+function main(params) {
+var text = params.text || ""
+var words = text.split(' ')
+return { words: words }
+}
+```
+
+8. Click **Save**. You can test that this code works by clicking **Change Input**, and providing the following json as the input parameter to the action: ```{"text":"these are just some words"}```
+
+9. Click **Invoke**, and you should see that the input words have been split into an array.
+
+<img src="images/lab3/" width="700">
+
+## CREATE THE SECOND AND THIRD ACTION
+
+The first action split the words apart by using space as a delimiter. The second action will reverse the text within each word.
+
+1. Click **/ Actions /** in the breadcrumb in the upper left of the page to go to the dashboard.
+
+<img src="images/lab3/" width="200">
+
+2. Click **Create** to open the Create page, and then select **Create Action**.
+
+<img src="images/lab3/" width="400">
+
+3. Again, specify your action name. This time, **reverse**. Click **Create**.
+
+<img src="images/lab3/" width="400">
+
+4. Copy, and then paste the action code into the code editor, and click **Save**:
+
+```
+function main(params) {
+var words = params.words || []
+var reversed = words.map(word => word.split("").reverse().join(""))
+return { words: reversed }
+}
+```
+
+5. Let’s create the third action in our sequence. Click **/ Actions /** in the breadcrumb in the upper left of the page to go to the dashboard.
+
+<img src="images/lab3/" width="200">
+
+6. Click **Create** to open the Create page, and then select **Create Action**.
+
+<img src="images/lab3/" width="400">
+
+7. Again, specify your action name. This time, join. The join action will rejoin the words into a string, with spaces in-between each reversed word. Click **Create**.
+
+8. Copy, and then paste your action code into the code editor, and click **Save**:
+
+```
+function main(params) {
+var words = params.words || []
+var text = words.join(' ')
+return { text: text }
+}
+```
+
+## CREATE THE SEQUENCE TO TIE THE ACTIONS TOGETHER
+
+Sequences are strings of actions. The output of one action in a sequence would be the input for the next action in the sequence, which would provide an output that can be used in the next action and so on. Sequences are treated by IBM Cloud Functions as a special kind of action, which means a sequence behaves just like a normal action. Sequences can be created, invoked, and managed just as an action would be.
+
+Sequences can be useful as an alternative to one action manually invoking another. If an action manually calls another, the system will charge you for both actions, since the first action is waiting on the second to complete. In a sequence, one action runs at a time, and you are only charged for one action running at a time. Let’s tie our actions into a sequence.
+
+1. Click **Enclosing Sequences** in the left side menu, and then click **Add to Sequence**. We don’t have a sequence created, so let’s create a new one. We need to name it something, for example *data-manipulation-sequence.*
+
+2. Once the sequence is named, click **Create & Add**.
+
+<img src="images/lab3/" width="600">
+
+3. Click the *sequence name* to further edit the sequence.
+
+<img src="images/lab3/" width="300">
+
+4. Click the **Add +** button to add more actions to this sequence.
+
+5. Select the **Select Existing** option, and then find the **split** action in the drop down. Once selected, click **Add** in the bottom right.
+
+<img src="images/lab3/" width="400">
+
+6. Repeat the steps for reverse. Click the Add + button, choose Select Existing, and then find the reverse action in the drop down. Once selected, click Add in the bottom right.
+
+7. Using the arrows, rearrange your sequence actions until they are in order: split, reverse, join, and then click Save.
+
+<img src="images/lab3/" width="600">
+
+8. Let’s try it out. We can provide the sequence with input, just like we can an action. Click **Change Input**, and then provide the following json, and then click **Apply**:
+
+```{"text":"These are some words"}```
+
+Click **Invoke**, and you should see the following output:
+
+<img src="images/lab3/" width="300">
+
+Did you notice that the logs include 3 numbers? Those are activation IDs for each of the individual actions within the sequence. Activation IDs are a unique identifier that actions generate when they are run. These can be used to debug in case something goes wrong with a particular action in the sequence.
+
+9. Try another input, by clicking Change Input, and then Invoke. ```{"text":" A malayalam pup did kayak"}```
+
+## CONCLUSION
+
+**Congratulations!** You have completed this lab. You have successfully created three Node.js actions, and tied them together into a sequence to do some data manipulation on strings – all from within a browser! Feel free to reach out should you have any questions.
 
 
 # Step 4: (Stretch goal) Configure the IBM Cloud CLI
