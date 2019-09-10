@@ -244,7 +244,7 @@ The CLI (command line interface) allows you to perform these basic operations fr
 
 7. Click **Invoke** to test this action directly from within your browser. You should see an Activations panel show up with the result. The result should be “Hello world”
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-8-Image-15.jpg" width="700">
 
 ## USE THE BUILT IN VISUAL RECOGNITION SDK FROM YOUR PYTHON ACTION.
 
@@ -287,11 +287,11 @@ visual_recognition = VisualRecognitionV3(version=version, iam_apikey=apiKey)
 
 3. Default parameters can be set for an action, rather than passing the parameters into the action every time. This is a useful option for data that stays the same on every invocation. Let’s set the apiKey as one of our default parameters. Click **Parameters** in the left side menu, and then click **Add Parameter +**.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-10-Image-16.jpg" width="600">
 
 4. For parameter name, **apiKey**, with a capital **K**. For parameter value, insert your apiKey value enclosed in quotation marks.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-10-Image-17.jpg" width="600">
 
 5. Click **Save**.
 
@@ -315,13 +315,13 @@ result = {'classes': tags}
 
 3. This is an image of a cute puppy. **Click Apply**.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-12-Image-19.jpg" width="200">
 
 4. Click **Invoke** to run the action. This action will pass the image to the Visual Recognition service to classify, then parse the returned information, and finally output just the classes or tags of the image.
 
 5. You should see some results in the Activations window like **Labrador Retriever, dog, pup,** and **animal**.
 
-<img src="images/lab2/" width="400">
+<img src="images/lab2/Page-12-Image-20.jpg" width="300">
 
 ## CONCLUSION
 
