@@ -1,4 +1,3 @@
-<style> img { white-space: nowrap;} </style>
 # Build Serverless Applications with Apache OpenWhisk!
 
 - Step 0: Sign up for IBM Cloud
@@ -106,30 +105,82 @@ IBM Cloud Functions is a Functions-as-a-Service (FaaS) platform that executes co
 So far, we’ve only triggered our actions manually. Let’s try to trigger our actions periodically.
 
 1. Update the existing action to contain the following code:
+
+```
+function main(params) {
+var date = new Date();
+var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+return { message: "The time is " + time };
+}
+```
+
 2. Click **Save**. This action returns the time. Try it out by clicking **Invoke**.
+
 3. Next, click the **Connected Triggers** button on the left pane. This will allow you
 to add a Trigger that causes the action to be run.
-4. Click on Add Trigger on the right side of the panel, and select a Periodic Trigger as the type.
+
+<img src="images/Page-9-Image-10.jpg" width="700">
+
+4. Click on **Add Trigger** on the right side of the panel, and select a **Periodic Trigger** as the type.
+
+<img src="images/Page-10-Image-11.jpg" width="500">
+
 5. Give your trigger a name (e.g. “minute-alarm”)
+
 6. scroll down to “UTC Minutes,” and select “Every Minute” from the pull down
 menu:
+
+<img src="images/Page-10-Image-12.jpg" width="700">
+
 7. Click **Create & Connect** to create the trigger and connect your action to it. Return the dashboard by clicking on **Actions** in the breadcrumbs.
+
+<img src="images/Page-10-Image-13.jpg" width="300">
+
 8. Click **Monitor** to see the activity of your actions and triggers. The Activity Log should show your action being triggered, and the time it was triggered in the result. If you don’t see the result, click the check mark for more details.
+
+<img src="images/Page-11-Image-14.jpg" width="400">
+
 9. To delete the trigger, expand the **Triggers** section, select your **minute-alarm** trigger you just created, and click the trash bin from the pull-down menu.
+
+<img src="images/Page-11-Image-15.jpg" width="700">
 
 ## CREATE A WEB ACTION
 
 1. Select Actions from the left-hand panel.
+
 2. Find your hello action, and mange it by clicking on its name.
+
+<img src="images/Page-11-Image-16.jpg" width="300">
+
 3. Change the code back to our hello action that takes name and place parameters:
+
+```
+function main(params) {
+return { message: 'Hello, ' + params.name + ' from ' + params.place };
+}
+```
+
 4. Click **Save**.
+
 5. To add a web endpoint and create a web action, select Endpoints from the left
 side menu, and select Enable as a Web Action.
+
+<img src="images/Page-12-Image-17.jpg" width="700">
+
 6. Click **Save** again. Copy the URL to the clipboard, using the clipboard icon.
+
+<img src="images/Page-12-Image-18.jpg" width="700">
+
 7. Once you have the URL copied, paste it as the URL into a browser window, and append the following parameters to the request to pass the name and place input parameters into the Action:
-*?name=ibmdevelopersf&place=SF*
+```?name=ibmdevelopersf&place=SF```
+
 8. As a response, you should then get the output of your action:
+
+<img src="images/Page-13-Image-19.jpg" width="300">
+
 9. This URL can be accessed by any http request. Disable the web action before you leave by deselecting the checkbox next to **Enable as Web Action** and clicking **Save**.
+
+<img src="images/Page-13-Image-20.jpg" width="400">
 
 ## CONCLUSION
 Congratulations! You have completed the lab. You have successfully built and deployed a number of Serverless Cloud Functions, including web actions that can be invoked from the browser or from microservices, all inside a browser! Feel free to reach out should you have any questions.
