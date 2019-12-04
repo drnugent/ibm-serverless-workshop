@@ -1,4 +1,4 @@
-# Build Serverless Applications with Apache OpenWhisk!
+# Build Serverless Applications with Apache OpenWhisk
 
 - Step 0: Sign up for IBM Cloud
 - Step 1: Create, build, and run a cloud-native Node.js serverless app in less than 15 minutes
