@@ -174,6 +174,8 @@ side menu, and select Enable as a Web Action.
 7. Once you have the URL copied, paste it as the URL into a browser window, and append the following parameters to the request to pass the name and place input parameters into the Action:
 ```?name=ibmdevelopersf&place=SF```
 
+**Troubleshooting tips:** If you don't get the JSON document that you expect, try adding ".json" to the end of the endpoint URL. If you are getting a cookie error, try opening the URL in an incognito browser window or different browser than your IBM Cloud login.
+
 8. As a response, you should then get the output of your action:
 
 <img src="images/Page-13-Image-19.jpg" width="300">
