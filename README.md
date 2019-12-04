@@ -8,7 +8,7 @@
 - Step 5: (Stretch goal) Create a Weather Bot
 
 # Step 0: Sign up for IBM Cloud
-- [IBM Cloud Sign Up](http://ibm.biz/ServerlessWebinar) - http://ibm.biz/ServerlessWebinar
+- [IBM Cloud Sign Up](http://ibm.biz/codesmith-signup) - http://ibm.biz/codesmith-signup
 
 **Q: I'm having issues signing up for IBM Cloud during the workshop.**
 
@@ -16,7 +16,7 @@
 
 **Q: What if I already have an IBM Cloud account?**
 
-**A:** Visit http://ibm.biz/ServerlessWebinar and log in to your account.
+**A:** Visit http://ibm.biz/codesmith-signup and log in to your account.
 
 # Step 1: Create, build, and run a cloud-native Node.js serverless app in less than 15 minutes
 
@@ -36,14 +36,14 @@ It provides a serverless deployment and operations model. With a granular pricin
 
 ## PREREQUISITES FOR THIS LAB
 
-* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/ServerlessWebinar
+* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/codesmith-signup
 
 ## CREATE AN ACTION IN THE CLOUD FUNCTIONS UI
 There are two main options to get started with Cloud Functions. Both allow you to work with Cloud Function’s basic entities by creating, updating, and deleting actions, triggers, rules and sequences.
 
 The CLI (command line interface) allows you to perform these basic operations from your shell. The IBM Cloud Functions UI (user interface), allows you to perform the same operations from your browser. As a stretch goal, step 4 of this lap involves installing the CLI. During this step of this lab we will use the UI to learn how to work with Cloud Functions.
 
-1. Start by logging into the IBM Cloud: http://ibm.biz/ServerlessWebinar, and then selecting the hamburger menu in the header.
+1. Start by logging into the IBM Cloud: http://ibm.biz/codesmith-signup, and then selecting the hamburger menu in the header.
 
 <img src="images/Page-3-Image-2.jpg" width="300">
 
@@ -194,12 +194,12 @@ In this lab, you’ll create an IBM Cloud Functions action that takes an image U
 
 ## PREREQUISITES FOR THIS LAB
             
-* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/ServerlessWebinar
+* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/codesmith-signup
 
 ## CREATE A VISUAL RECOGNITION SERVICE
 For this quicklab, you will need to provision a Visual Recognition service in the IBM Cloud.
 
-1. Start by logging into the IBM Cloud: http://ibm.biz/ServerlessWebinar, and then select the **Create Resource** button in the top right. If you do not see Create Resource, you can select **Catalog**.
+1. Start by logging into the IBM Cloud: http://ibm.biz/codesmith-signup, and then select the **Create Resource** button in the top right. If you do not see Create Resource, you can select **Catalog**.
 
 2. Select **AI** in the left menu, and then select **Visual Recognition**. You can create only one free **lite tier** resource with the free IBM Cloud account. If you already have a visual recognition service, either delete it and follow these steps or you can skip to step 4 to get the credentials.
 
@@ -336,7 +336,7 @@ In this lab, you’ll create three functions for doing some data manipulation of
 
 ## PREREQUISITES FOR THIS LAB
 
-* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/ServerlessWebinar
+* You will need an IBM Cloud Account. Either use your existing account, or create a new account by accessing the following link: http://ibm.biz/codesmith-signup
 
 ## CREATE THE FIRST ACTION
 
