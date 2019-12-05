@@ -315,6 +315,8 @@ result = {'classes': tags}
 
 ```{"imageUrl":"https://raw.githubusercontent.com/beemarie/ow-vr/master/images/puppy.jpg"}```
 
+**If you're running into an error:** Try placing the imageURL key and value into the Parameters in the left hand menu.
+
 3. This is an image of a cute puppy. **Click Apply**.
 
 <img src="images/lab2/Page-12-Image-19.jpg" width="200">
